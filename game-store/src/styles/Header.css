@@ -1,0 +1,34 @@
+nav{
+    display: flex;
+    justify-content:center;
+    
+}
+.main-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.right-side{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content:space-between;
+    gap: 30px;
+}
+.Home{
+    text-decoration: none;
+    color: inherit;
+    font-size: 2.5em;
+    font-family:fantasy;
+}
+.links{
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.4em;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
