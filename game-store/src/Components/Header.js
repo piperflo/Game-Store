@@ -6,10 +6,14 @@ class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
-            data:{}
+            data:{},
+            count: 0
         }
     }
 
+    handleCountChange = count => {
+        this.setState({count : this.state.count + 1});
+    }
     componentDidMount() {
         this.getGameData();
       }
@@ -21,16 +25,12 @@ class Header extends Component{
             this.setState({
                 data: data
             });
-            //console.log("Game Api: " + data);
-            //console.log(data);
-            //console.log(this.state.data)
-            
         } catch (error) {
             alert("Couldn't Find Data");
         }
     }
     render(){
-        const {data} = this.state;
+        const {data, count} = this.state;
         //console.log("Showing Api Data ----------------------")
         //console.log(this.state.data)
         return(
@@ -38,18 +38,22 @@ class Header extends Component{
                 <nav>
                     <ul className="main-list">
                         <li>
-                            <Link data={data} className="Home" to="/">GameStore</Link>
+                            <Link className="Home" to="/">GameStore</Link>
                         </li>
                         <li>
                             <ul className="right-side">
                                 <li>
-                                    <Link className="links" to="/products">Products</Link>
+                                    <Link className="links" to="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link className="links" to="/products">Products</Link>
+                                    <Link className="links" to="/games" state={{data: {data}, count:{count} }}>Games</Link>
                                 </li>
                                 <li>
-                                    <Link className="links" to="/products">Products</Link>
+                                    <Link className="links" to="/about">About</Link>
+                                </li>
+                                
+                                <li>
+                                    <button id="counter">{count}</button>
                                 </li>
                             </ul>
                         </li>

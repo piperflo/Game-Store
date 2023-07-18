@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Header from './Header'
+import {  Link, Outlet } from "react-router-dom";
 import '../styles/Home.css'
 class Home extends Component{
     constructor(props){
@@ -9,7 +10,6 @@ class Home extends Component{
         };
 
         const {data} = props;
-        console.log(data)
     }
 
     //const [url, setUrl] = useState("");
@@ -32,17 +32,12 @@ class Home extends Component{
                 <Header/>
                 <main id="home-container">
                     <div id="left-container">
-                        {}
-                    </div>
-                    <div id="center-container">
-                        <p>BEST ONLINE STORE FOR GAMERS</p>
-                        <h2>Take your gaming to the next level</h2>
-                        <img src={this.state.url} alt="Ps5 Animations" id="img"></img>
+                        <div className="text"><p>BEST ONLINE STORE FOR<br/> GAMERS</p></div>
+                        <div className="h-text"><h2>Take your gaming <br/> to the next <br/> level</h2></div>
                     </div>
                     <div id="right-container">
-    
+                        <img src={this.state.url} alt="Ps5 Animations" id="img"></img>
                     </div>
-                    Home Page
                 </main>
             </>
         )
