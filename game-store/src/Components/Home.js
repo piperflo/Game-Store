@@ -8,17 +8,12 @@ class Home extends Component{
         this.state = {
             url: ""
         };
-
-        const {data} = props;
     }
-
-    //const [url, setUrl] = useState("");
 
     componentDidMount() {
         this.getGameData();
       }
     async getGameData() {
-            //console.log(img);
             const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=HpSRIkSD27rlQBiW0AWfNL68jgvTDAXF&s=playstation-ps5-dualsense-adaptive-triggers-dKTJvjV16COKNAhLJV', {mode: 'cors'});
             const data = await response.json(); 
             var link = encodeURI(data.data.images.original.url);
@@ -29,7 +24,6 @@ class Home extends Component{
     render(){
         return(
             <>
-                <Header/>
                 <main id="home-container">
                     <div id="left-container">
                         <div className="text"><p>BEST ONLINE STORE FOR<br/> GAMERS</p></div>

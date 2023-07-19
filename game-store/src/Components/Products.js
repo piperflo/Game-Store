@@ -1,48 +1,26 @@
-import React, {useState, useEffect, useRef} from 'react'
-import Header from './Header';
+import React, {useState, useEffect} from 'react'
 import '../styles/Products.css'
-import { useLocation } from 'react-router-dom';
 
 const Products = ({addCount, addGame}) =>{
-    const [count, setCount] = useState(0);
     const [gameList, setGameList] = useState([]);
-    const [cart, setCart] = useState([]);
-    const inputRef = useRef();
-    const location = useLocation();
 
     useEffect(() => {
-        const l = location.state.data;;
-        //const count = l.data.count;
-        const results = l.data.results;
-        setGameList(gameList.concat(results));      
+        async function getGameData() {
+            try {
+                const response = await fetch('https://api.rawg.io/api/games?key=ddcd3b9514ba4f1286e15eec3f9a3e65&dates=2023-01-01,2023-07-16', {mode: 'cors'});
+                const data = await response.json(); 
+                setGameList(data.results);
+            } catch (error) {
+                alert("Couldn't Find Data");
+            }
+        }
+        getGameData();    
     },[]);
 
-    const updateCount = (event) =>{
-        var gameName = event.target.parentNode.children[1].textContent;
-        setCart(cart.concat(gameName));
-        setCount(count + 1);
-        console.log(gameName);
-        console.log("Input Ref below --------------")
-        console.log(inputRef);
-    }
-
-    const displayCart = (event) =>{
-        //const cartContainer = document.getElementById("cart-container");
-        console.log(event);
-        //console.log(cartContainer)
-        //cartContainer.style.display = "flex";
-    }
-    //<div id="counter" onClick={displayCart}>Show {count} Games</div>
     return(
         <>
-            <Header ref={inputRef}/>
             
-            <div id="products-container">
-                <div id="cart-container">{cart.map((items) => {
-                                return ( 
-                                    <p>{items}</p>
-                                )
-                            })}</div>
+            <div className="products-container">
                 <div id="card-container">
                     <div id="games">
                         {gameList.map((game) => {
@@ -56,7 +34,6 @@ const Products = ({addCount, addGame}) =>{
                             })}
                     </div>
                 </div>
-                Products Page
             </div>
         </>
     )

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
 import Home from "./Components/Home";
 import Products from "./Components/Products";
 import Header from './Components/Header';
+import About from "./Components/About";
 
 const RouteSwitch = () => {
 
@@ -17,14 +17,15 @@ const RouteSwitch = () => {
     setCount(count + 1);
     console.log(cartItems);
   }
-
+  
   
   return (
     <BrowserRouter>
-      <Header cartItems={cartItems}/>
+      <Header cartItems={cartItems} count={count}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/games" element={<Products addGame={addGame}/>} />
+        <Route path="/games" element={<Products addGame={addGame} />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

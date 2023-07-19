@@ -1,38 +1,22 @@
-import React, {Component} from 'react'
+import React, {useEffect} from 'react'
 import {  Link, Outlet } from "react-router-dom";
 import '../styles/Header.css'
 
-class Header extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            data:{},
-            count: 0
+const Header = ({cartItems, count}) =>{
+    
+    useEffect(() => {
+        const button = document.getElementById("open-cart");
+        const cartContainer = document.getElementById("cart-container");
+        const closeForm = document.getElementById("close-form");
+        const updateCount = () =>{
+            cartContainer.style.display = "flex";
         }
-    }
-
-    handleCountChange = count => {
-        this.setState({count : this.state.count + 1});
-    }
-    componentDidMount() {
-        this.getGameData();
-      }
-
-    async getGameData() {
-        try {
-            const response = await fetch('https://api.rawg.io/api/games?key=ddcd3b9514ba4f1286e15eec3f9a3e65&dates=2023-01-01,2023-07-16', {mode: 'cors'});
-            const data = await response.json(); 
-            this.setState({
-                data: data
-            });
-        } catch (error) {
-            alert("Couldn't Find Data");
+        const close = () =>{
+            cartContainer.style.display = "none";
         }
-    }
-    render(){
-        const {data, count} = this.state;
-        //console.log("Showing Api Data ----------------------")
-        //console.log(this.state.data)
+        button.addEventListener("click", updateCount);
+        closeForm.addEventListener("click", close);
+    },[count]);
         return(
             <>
                 <nav>
@@ -46,23 +30,32 @@ class Header extends Component{
                                     <Link className="links" to="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link className="links" to="/games" state={{data: {data}, count:{count} }}>Games</Link>
+                                    <Link className="links" to="/games" >Games</Link>
                                 </li>
                                 <li>
                                     <Link className="links" to="/about">About</Link>
-                                </li>
-                                
-                                <li>
-                                    <button id="counter">{count}</button>
-                                </li>
+                                </li>                         
+                                    <button id="open-cart">Items: {count}</button>
                             </ul>
                         </li>
                     </ul>
                 </nav>
+                <div id="cart-container">
+                    <div id="cart">
+                        <div id="form-container">
+                            <h2 id="cart-header">Cart</h2> 
+                            <div id="close-form" >X</div>
+                        </div>{cartItems.map((items) => {
+                            return (
+                                //Make sure to use index for unique keys 
+                                <p key={items} className="game-name">{items}</p>
+                            )
+                        })}</div>
+                </div>
                 <Outlet />
             </>
         )
-    }
+    
 }
 
 export default Header;
