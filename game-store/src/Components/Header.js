@@ -24,7 +24,7 @@ const Header = ({cartItems, count}) =>{
                 <nav>
                     <ul className="main-list">
                         <li>
-                            <Link className="Home" to="/Game-Store">GameStore</Link>
+                            <h1 className="Home" to="/Game-Store">GameStore</h1>
                         </li>
                         <li>
                             <ul className="right-side">
