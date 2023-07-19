@@ -29,7 +29,7 @@ const Header = ({cartItems, count}) =>{
                         <li>
                             <ul className="right-side">
                                 <li>
-                                    <Link className="links" to="/">Home</Link>
+                                    <Link className="links" to="/Game-Store">Home</Link>
                                 </li>
                                 <li>
                                     <Link className="links" to="/games" >Games</Link>
