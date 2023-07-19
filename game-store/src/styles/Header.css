@@ -109,3 +109,21 @@ nav{
     font-size: 1.7em;
     font-family: sans-serif;
 }
+
+@media screen and (max-width: 800px) {
+    nav{
+        flex-direction: column;
+        height: 150px;
+        width: 100%;
+    }
+    .main-list{
+        padding-top: 20px;
+        flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+    }
+    #cart{
+        width: 100%;
+    }
+}

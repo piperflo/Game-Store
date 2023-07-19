@@ -87,13 +87,6 @@ body{
         height: 150px;
         width: 100%;
     }
-    .main-list{
-        padding-top: 20px;
-        flex-direction: column;
-        padding-left: 0;
-        padding-right: 0;
-        margin: 0;
-    }
     .right-side{
         justify-content: flex-start;
         gap: 25px;
