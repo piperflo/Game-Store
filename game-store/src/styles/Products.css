@@ -37,7 +37,7 @@ body{
 }
 
 .game-image{
-    width: 20vw;
+    width: max(320px,20vw);
     height: 100%;
     border-radius: 25px 25px 0 0;
     -webkit-border-radius: 25px 25px 0 0;
@@ -60,6 +60,9 @@ body{
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     font-size: 1.1em;
+}
+.addGame{
+    cursor: pointer;
 }
 #open-cart{
     cursor: pointer;

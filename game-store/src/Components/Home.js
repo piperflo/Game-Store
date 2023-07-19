@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import Header from './Header'
-import {  Link, Outlet } from "react-router-dom";
 import '../styles/Home.css'
 class Home extends Component{
     constructor(props){
@@ -14,13 +12,12 @@ class Home extends Component{
         this.getGameData();
       }
     async getGameData() {
-            const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=HpSRIkSD27rlQBiW0AWfNL68jgvTDAXF&s=playstation-ps5-dualsense-adaptive-triggers-dKTJvjV16COKNAhLJV', {mode: 'cors'});
-            const data = await response.json(); 
-            var link = encodeURI(data.data.images.original.url);
-            this.setState({url: link.toString()});
-            
+        const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=HpSRIkSD27rlQBiW0AWfNL68jgvTDAXF&s=playstation-ps5-dualsense-adaptive-triggers-dKTJvjV16COKNAhLJV', {mode: 'cors'});
+        const data = await response.json(); 
+        var link = encodeURI(data.data.images.original.url);
+        this.setState({url: link.toString()});           
     }
-    //getGameData();
+
     render(){
         return(
             <>

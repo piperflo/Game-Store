@@ -16,7 +16,9 @@ const Header = ({cartItems, count}) =>{
         }
         button.addEventListener("click", updateCount);
         closeForm.addEventListener("click", close);
-    },[count]);
+
+    },[count, cartItems]);
+    
         return(
             <>
                 <nav>
@@ -48,7 +50,7 @@ const Header = ({cartItems, count}) =>{
                         </div>{cartItems.map((items) => {
                             return (
                                 //Make sure to use index for unique keys 
-                                <p key={items} className="game-name">{items}</p>
+                                <div><p key={items} className="game-name">{items}</p></div>                             
                             )
                         })}</div>
                 </div>
